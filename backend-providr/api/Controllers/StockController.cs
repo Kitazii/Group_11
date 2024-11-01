@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -34,6 +35,14 @@ namespace api.Controllers
             }
 
             return Ok(stock);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateStock([FromBody] Stock stock) 
+        {
+            await _context.AddAsync(stock);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(CreateStock), new { id = stock.Id }, stock);
         }
 
     }

@@ -169,3 +169,5 @@ C:\Users\rikes\Downloads\Project-Providr\backend-providr\api\obj\Debug\net8.0\re
 C:\Users\rikes\Downloads\Project-Providr\backend-providr\api\obj\Debug\net8.0\api.pdb
 C:\Users\rikes\Downloads\Project-Providr\backend-providr\api\obj\Debug\net8.0\api.genruntimeconfig.cache
 C:\Users\rikes\Downloads\Project-Providr\backend-providr\api\obj\Debug\net8.0\ref\api.dll
+C:\Users\rikes\Downloads\Project-Providr\backend-providr\api\bin\Debug\net8.0\DotNetEnv.dll
+C:\Users\rikes\Downloads\Project-Providr\backend-providr\api\bin\Debug\net8.0\Sprache.dll
