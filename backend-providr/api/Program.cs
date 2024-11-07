@@ -1,4 +1,7 @@
 using api.Data;
+using api.Interfaces;
+using api.Repository;
+using api.Respository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.JSInterop.Infrastructure;
 
@@ -27,6 +30,9 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
                 errorNumbersToAdd: null) // Optional specific error numbers to retry on  
     );
 });
+
+builder.Services.AddScoped<IStockRepository, StockRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 
 var app = builder.Build();
 
