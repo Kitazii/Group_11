@@ -4,7 +4,13 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <InvariantGlobalization>fasle</InvariantGlobalization>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <!-- Docker error problem -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <NoWarn>CS8981</NoWarn>
+    <OutputPath>bin/Release/net8.0/</OutputPath>
+    <!-- end -->
   </PropertyGroup>
 
   <ItemGroup>

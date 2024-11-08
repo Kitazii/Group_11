@@ -1,0 +1,27 @@
+
+services:
+  backend:
+    build:
+      context: ./backend-providr
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"  # Maps container port 5000 to host port 5000
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend-providr
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" 
+    depends_on:
+      - backend  
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
