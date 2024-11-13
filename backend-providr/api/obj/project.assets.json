@@ -8762,31 +8762,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rikes\\.nuget\\packages\\": {},
-    "A:\\Program Files (x86)\\Visual Studio\\shared\\NuGetPackages": {}
+    "C:\\Users\\mrkie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rikes\\Downloads\\Project-Providr\\backend-providr\\api\\api.csproj",
+      "projectUniqueName": "C:\\Users\\mrkie\\Desktop\\Group_11\\backend-providr\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\rikes\\Downloads\\Project-Providr\\backend-providr\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\rikes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rikes\\Downloads\\Project-Providr\\backend-providr\\api\\obj\\",
+      "projectPath": "C:\\Users\\mrkie\\Desktop\\Group_11\\backend-providr\\api\\api.csproj",
+      "packagesPath": "C:\\Users\\mrkie\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mrkie\\Desktop\\Group_11\\backend-providr\\api\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "A:\\Program Files (x86)\\Visual Studio\\shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\rikes\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\mrkie\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8862,7 +8855,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
