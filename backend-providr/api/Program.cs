@@ -17,7 +17,7 @@ builder.Services.AddSwaggerGen();
 
 DotNetEnv.Env.Load();
 
-string? password = Environment.GetEnvironmentVariable("AZURE_PASSWORD") ?? "password is empty";
+string? password = Environment.GetEnvironmentVariable("AZURE_PASSWORD") ?? "password is empty"; //comment
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")?.Replace("{Password}", password) ?? "Connection string is empty";
 
 
