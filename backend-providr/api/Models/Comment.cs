@@ -15,6 +15,6 @@ namespace api.Models
         public int? StockId { get; set; }
         //Navigation
 
-        public Stock? Stock { get; set;}
+        //public Stock? Stock { get; set;}
     }
 }

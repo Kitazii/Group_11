@@ -6,8 +6,8 @@ using api.Models;
 
 namespace api.Interfaces
 {
-    public interface IStockRepository
+    public interface IBusinessRepository
     {
-        Task<List<Stock>> GetAllAsync();
+        Task<List<Business>> GetAllAsync();
     }
 }
