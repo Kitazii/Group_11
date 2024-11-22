@@ -1,0 +1,90 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    min-height: 100vh;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Card container */
+.card {
+    background: #ffffff;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+    padding: 20px;
+}
+
+/* Image styling */
+.card img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    margin: 20px auto;
+    border: 4px solid #90caf9;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+}
+
+/* Details section */
+.details {
+    margin: 20px 0;
+}
+
+.details h2 {
+    font-size: 1.8rem;
+    color: #1e88e5;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.details p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 10px;
+}
+
+/* Info section */
+.info {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 15px;
+    padding: 0 10px;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
