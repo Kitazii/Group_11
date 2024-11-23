@@ -8,16 +8,14 @@ using System.Threading.Tasks;
 namespace api.Models
 {
     [Table("Business")]
-    public class Business
+    public class Business : AppUser
     {
-        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string TelephoneNumber { get; set; } = string.Empty;
-        public string Street { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public string Postcode { get; set; } = string.Empty;
-        //NAV PROP - for Service Request
+        public BusinessType? BusinessType { get; set; }
+    }
 
+    public enum BusinessType
+    {
+        Electrition, Plumber, Painter, Plasterer, Break_Layer
     }
 }

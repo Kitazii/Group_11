@@ -16,7 +16,7 @@ namespace api.Mappers
                 Id = businessModel.Id,
                 Name = businessModel.Name,
                 Email = businessModel.Email,
-                TelephoneNumber = businessModel.TelephoneNumber,
+                PhoneNumber = businessModel.PhoneNumber,
                 Street = businessModel.Street,
                 City = businessModel.City,
                 Postcode = businessModel.Postcode
@@ -29,7 +29,7 @@ namespace api.Mappers
             {
                 Name = businessDto.Name,
                 Email = businessDto.Email,
-                TelephoneNumber = businessDto.TelephoneNumber,
+                PhoneNumber = businessDto.PhoneNumber,
                 Street = businessDto.Street,
                 City = businessDto.City,
                 Postcode = businessDto.Postcode

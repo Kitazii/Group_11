@@ -186,6 +186,8 @@ C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Az
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Azure.Identity.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\DotNetEnv.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Humanizer.dll
+C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.CodeAnalysis.dll
