@@ -9,18 +9,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
 {
-    public class CommentRepository : ICommentRepository
+    public class TicketRepository : ITicketRepository
     {
         private readonly ApplicationDBContext _context;
-    public CommentRepository(ApplicationDBContext context)
+    public TicketRepository(ApplicationDBContext context)
     {
         _context = context;
 
     }
 
-    public async Task<List<Comment>> GetAllAsync()
+    public async Task<List<Ticket>> GetAllAsync()
     {
-        return await _context.Comments.ToListAsync();
+        return await _context.Tickets.ToListAsync();
     }
 
     }

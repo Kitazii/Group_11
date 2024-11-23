@@ -8,6 +8,10 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.119",
+<<<<<<< HEAD
+=======
+    "@types/react": "^18.3.12",
+>>>>>>> Kieran
     "@types/react-dom": "^18.3.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -38,8 +42,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "devDependencies": {
     "@types/react": "^18.3.12"
+=======
+>>>>>>> Kieran
   }
 }

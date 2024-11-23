@@ -28,12 +28,12 @@ namespace api.Controllers
         public async Task<IActionResult> GetAll()
         {
             var businesses = await _businessRepo.GetAllAsync();
-            var businessDto = businesses.Select(s => s.ToBusinessDto() ) ;
+            var businessDto = businesses.Select(b => b.ToBusinessDto() ) ;
 
             return Ok(businessDto);
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById([FromRoute] int id) 
+        public async Task<IActionResult> GetById([FromRoute] string id) 
         {
             var business = await _context.Businesses.FindAsync(id);
 
@@ -55,9 +55,10 @@ namespace api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = businessModel.Id}, businessModel.ToBusinessDto());
         }
 
+
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateBusinessRequestDto updateDto)
+        public async Task<IActionResult> Update([FromRoute] string id, [FromBody] UpdateBusinessRequestDto updateDto)
         {
             var businessModel = await _context.Businesses.FirstOrDefaultAsync(b => b.Id == id);
 
@@ -68,10 +69,10 @@ namespace api.Controllers
 
             businessModel.Name = updateDto.Name;
             businessModel.Email = updateDto.Email;
-            businessModel.TelephoneNumber = updateDto.TelephoneNumber;
+            businessModel.PhoneNumber = updateDto.PhoneNumber;
             businessModel.Street = updateDto.Street;
-            businessModel.City = businessModel.City;
-            businessModel.PostCode = businessModel.PostCode;
+            businessModel.City = updateDto.City;
+            businessModel.Postcode = updateDto.Postcode;
 
             await _context.SaveChangesAsync();
 
@@ -81,7 +82,7 @@ namespace api.Controllers
 
         [HttpDelete]
         [Route("{id}")]
-        public async Task<IActionResult> Delete([FromRoute] int id )
+        public async Task<IActionResult> Delete([FromRoute] string id )
         {
             var businessModel = await _context.Businesses.FirstOrDefaultAsync(b => b.Id == id);
 

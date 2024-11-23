@@ -11,8 +11,7 @@ namespace api.Data
     {
         public ApplicationDBContext(DbContextOptions dbContextOptions)
         : base(dbContextOptions) {}
-
-        public DbSet<Business>? Businesses{ get; set; }
-        public DbSet<Comment>? Comments{ get; set; }
+        public DbSet<Business> Businesses{ get; set; }
+        public DbSet<Ticket> Tickets{ get; set; }
     }
 }

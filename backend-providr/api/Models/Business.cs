@@ -7,19 +7,15 @@ using System.Threading.Tasks;
 
 namespace api.Models
 {
-    [Table("Businesses")]
-    public class Business
+    [Table("Business")]
+    public class Business : AppUser
     {
-        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
-        public string TelephoneNumber { get; set; } = string.Empty;
-        public string Street { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public string PostCode { get; set; } = string.Empty;
+        public BusinessType? BusinessType { get; set; }
+    }
 
-        //NAV PROP - MANY
-        //public List<> MyProperty { get; set; }
+    public enum BusinessType
+    {
+        Electrition, Plumber, Painter, Plasterer, Break_Layer
     }
 }
