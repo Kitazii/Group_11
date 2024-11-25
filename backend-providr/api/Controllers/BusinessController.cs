@@ -73,6 +73,13 @@ namespace api.Controllers
             businessModel.Street = updateDto.Street;
             businessModel.City = updateDto.City;
             businessModel.Postcode = updateDto.Postcode;
+            businessModel.BusinessType = (BusinessType?)updateDto.BusinessType;
+            //businessModel.BusinessType.HasValue 
+            //? Enum.GetName(typeof(BusinessType), businessModel.BusinessType.Value) 
+            //: null
+            businessModel.BusinessTypeValue = updateDto.BusinessType.HasValue 
+            ? Enum.GetName(typeof(BusinessType), updateDto.BusinessType.Value) 
+            : null;
 
             await _context.SaveChangesAsync();
 

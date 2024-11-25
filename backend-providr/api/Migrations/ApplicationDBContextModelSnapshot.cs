@@ -33,6 +33,9 @@ namespace api.Migrations
                     b.Property<int?>("BusinessType")
                         .HasColumnType("int");
 
+                    b.Property<string>("BusinessTypeValue")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

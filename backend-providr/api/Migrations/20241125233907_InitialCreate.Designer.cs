@@ -12,8 +12,8 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241123214506_CreateMigration")]
-    partial class CreateMigration
+    [Migration("20241125233907_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,9 @@ namespace api.Migrations
 
                     b.Property<int?>("BusinessType")
                         .HasColumnType("int");
+
+                    b.Property<string>("BusinessTypeValue")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .IsRequired()
