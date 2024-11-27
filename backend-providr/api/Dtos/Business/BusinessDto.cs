@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Business.Enum;
 
 namespace api.Dtos.Business
 {
@@ -14,6 +15,8 @@ namespace api.Dtos.Business
         public string Street { get; set; } = string.Empty;
         public string City { get; set; } = string.Empty;
         public string Postcode { get; set; } = string.Empty;
+        public BusinessType? BusinessType { get; set; }
+        public string? BusinessTypeValue { get; set; } = string.Empty;
         //NAV PROP - for Service Request
 
     }

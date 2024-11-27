@@ -11,11 +11,12 @@ namespace api.Models
     public class Business : AppUser
     {
         public string Name { get; set; } = string.Empty;
-        public BusinessType? BusinessType { get; set; }
+        public BusinessType? BusinessType { get; set; } = 0;
+        public string? BusinessTypeValue { get; set; } = string.Empty;
     }
 
     public enum BusinessType
     {
-        Electrition, Plumber, Painter, Plasterer, Break_Layer
+        Electrition, Plumber, Painter, Plasterer, Brick_Layer
     }
 }
