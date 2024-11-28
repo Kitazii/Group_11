@@ -16,7 +16,7 @@ namespace api.Dtos.Business
         public string City { get; set; } = string.Empty;
         public string Postcode { get; set; } = string.Empty;
         public BusinessType? BusinessType { get; set; }
-        public string? BusinessTypeValue { get; set; } = string.Empty;
+        public string BusinessTypeValue { get; set; } = string.Empty;
         //NAV PROP - for Service Request
 
     }

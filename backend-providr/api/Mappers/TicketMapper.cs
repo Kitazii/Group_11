@@ -20,5 +20,14 @@ namespace api.Mappers
                 Service_Request_Date = ticketModel.Service_Request_Date
             }; 
         }
+
+        public static Ticket ToTicketFromCreateDTO(this CreateTicketRequestDto ticketDto)
+        {
+            return new Ticket
+            {
+                Service_Request_Name = ticketDto.Service_Request_Name,
+                Service_Request_Date = ticketDto.Service_Request_Date
+            };
+        }
     }
 }

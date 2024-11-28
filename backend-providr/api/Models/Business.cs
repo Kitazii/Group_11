@@ -12,7 +12,7 @@ namespace api.Models
     {
         public string Name { get; set; } = string.Empty;
         public BusinessType? BusinessType { get; set; } = 0;
-        public string? BusinessTypeValue { get; set; } = string.Empty;
+        public string BusinessTypeValue { get; set; } = string.Empty;
     }
 
     public enum BusinessType

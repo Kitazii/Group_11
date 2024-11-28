@@ -10,6 +10,8 @@ namespace api.Mappers
 {
     public static class BusinessMapper
     {
+        #pragma warning disable CS8629 // Nullable value type may be null.
+        #pragma warning disable CS8601
         public static BusinessDto ToBusinessDto(this Business businessModel)
         {
             return new BusinessDto
@@ -44,5 +46,24 @@ namespace api.Mappers
             : null
             };
         }
+
+        public static Business ToBusinessFromUpdateDto(this UpdateBusinessRequestDto businessDto, Business existingBusiness)
+        {
+            return new Business
+            {
+                Name = string.IsNullOrWhiteSpace(businessDto.Name) ? existingBusiness.Name : businessDto.Name,
+                Email = string.IsNullOrWhiteSpace(businessDto.Email) ? existingBusiness.Email : businessDto.Email,
+                PhoneNumber = string.IsNullOrWhiteSpace(businessDto.PhoneNumber) ? existingBusiness.PhoneNumber : businessDto.PhoneNumber,
+                Street = string.IsNullOrWhiteSpace(businessDto.Street) ? existingBusiness.Street : businessDto.Street,
+                City = string.IsNullOrWhiteSpace(businessDto.City) ? existingBusiness.City : businessDto.City,
+                Postcode = string.IsNullOrWhiteSpace(businessDto.Postcode) ? existingBusiness.Postcode : businessDto.Postcode,
+                BusinessType = businessDto.BusinessType.HasValue ? (BusinessType)businessDto.BusinessType.Value : existingBusiness.BusinessType,
+                BusinessTypeValue = businessDto.BusinessType.HasValue
+                    ? Enum.GetName(typeof(BusinessType), businessDto.BusinessType.Value)
+                    : existingBusiness.BusinessTypeValue
+            };
+        }
+        #pragma warning restore CS8629 // Nullable value type may be null.
+        #pragma warning restore CS8601
     }
 }

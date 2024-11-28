@@ -12,16 +12,36 @@ namespace api.Repository
     public class TicketRepository : ITicketRepository
     {
         private readonly ApplicationDBContext _context;
-    public TicketRepository(ApplicationDBContext context)
-    {
-        _context = context;
+        public TicketRepository(ApplicationDBContext context)
+        {
+            _context = context;
+        }
 
-    }
+        public async Task<Ticket> CreateTicketAsync(Ticket ticketModel)
+        {
+            await _context.Tickets.AddAsync(ticketModel);
+            await _context.SaveChangesAsync();
+            return ticketModel;
+        }
 
-    public async Task<List<Ticket>> GetAllAsync()
-    {
-        return await _context.Tickets.ToListAsync();
-    }
+        public Task<Ticket?> DeleteTicketAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
 
+        public async Task<List<Ticket>> GetAllAsync()
+        {
+            return await _context.Tickets.ToListAsync();
+        }
+
+        public Task<Ticket?> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Ticket?> UpdateTicketAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

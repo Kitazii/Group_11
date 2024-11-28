@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
 using api.Dtos.Business;
+using api.Helpers;
 using api.Interfaces;
 using api.Mappers;
 using api.Models;
@@ -16,42 +17,40 @@ namespace api.Controllers
     [ApiController]
     public class BusinessController : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
         private readonly IBusinessRepository _businessRepo;
-        public  BusinessController(ApplicationDBContext context, IBusinessRepository businessRepo )
+        public  BusinessController(IBusinessRepository businessRepo )
         {
             _businessRepo = businessRepo;
-            _context = context;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] BusinessQueryObject query)
         {
-            var businesses = await _businessRepo.GetAllAsync();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var businesses = await _businessRepo.GetAllAsync(query);
             var businessDto = businesses.Select(b => b.ToBusinessDto() ) ;
 
             return Ok(businessDto);
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById([FromRoute] string id) 
         {
-            var business = await _context.Businesses.FindAsync(id);
+            var business = await _businessRepo.GetByIdAsync(id);
 
-            if(business == null)
-            {
-                return NotFound();
-            }
+            if(business == null) return NotFound();
 
             return Ok(business.ToBusinessDto());
         }
 
         [HttpPost]
-
         public async Task<IActionResult> Create([FromBody] CreateBusinessRequestDto businessDto)
         {
             var businessModel = businessDto.ToBusinessFromCreateDTO();
-            await _context.Businesses.AddAsync(businessModel);
-            await _context.SaveChangesAsync();
+
+            await _businessRepo.CreateBusinessAsync(businessModel);
+
             return CreatedAtAction(nameof(GetById), new { id = businessModel.Id}, businessModel.ToBusinessDto());
         }
 
@@ -60,28 +59,17 @@ namespace api.Controllers
         [Route("{id}")]
         public async Task<IActionResult> Update([FromRoute] string id, [FromBody] UpdateBusinessRequestDto updateDto)
         {
-            var businessModel = await _context.Businesses.FirstOrDefaultAsync(b => b.Id == id);
+            //fetch the existing business by ID from the database
+            var existingBusiness = await _businessRepo.GetByIdAsync(id);
 
-            if(businessModel == null)
+            //check if the business exists
+            if (existingBusiness == null)
             {
                 return NotFound();
             }
+            var businessModel = updateDto.ToBusinessFromUpdateDto(existingBusiness);
 
-            businessModel.Name = updateDto.Name;
-            businessModel.Email = updateDto.Email;
-            businessModel.PhoneNumber = updateDto.PhoneNumber;
-            businessModel.Street = updateDto.Street;
-            businessModel.City = updateDto.City;
-            businessModel.Postcode = updateDto.Postcode;
-            businessModel.BusinessType = (BusinessType?)updateDto.BusinessType;
-            //businessModel.BusinessType.HasValue 
-            //? Enum.GetName(typeof(BusinessType), businessModel.BusinessType.Value) 
-            //: null
-            businessModel.BusinessTypeValue = updateDto.BusinessType.HasValue 
-            ? Enum.GetName(typeof(BusinessType), updateDto.BusinessType.Value) 
-            : null;
-
-            await _context.SaveChangesAsync();
+            if(businessModel == null) return NotFound();
 
             return Ok(businessModel.ToBusinessDto());
             
@@ -91,16 +79,9 @@ namespace api.Controllers
         [Route("{id}")]
         public async Task<IActionResult> Delete([FromRoute] string id )
         {
-            var businessModel = await _context.Businesses.FirstOrDefaultAsync(b => b.Id == id);
+            var businessModel = await _businessRepo.DeleteBusinessAsync(id);
 
-            if(businessModel == null)
-            {
-                return NotFound();
-            }
-
-            _context.Businesses.Remove(businessModel);
-
-            await _context.SaveChangesAsync();
+            if(businessModel == null) return NotFound();
 
             return NoContent();
             
