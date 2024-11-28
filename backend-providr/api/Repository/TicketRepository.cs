@@ -24,9 +24,17 @@ namespace api.Repository
             return ticketModel;
         }
 
-        public Task<Ticket?> DeleteTicketAsync(int id)
+        public async Task<Ticket?> DeleteTicketAsync(int id)
         {
-            throw new NotImplementedException();
+            var ticketModel = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
+
+            if(ticketModel == null) return null;
+
+            _context.Tickets.Remove(ticketModel);
+
+            await _context.SaveChangesAsync();
+
+            return ticketModel;
         }
 
         public async Task<List<Ticket>> GetAllAsync()
@@ -34,14 +42,20 @@ namespace api.Repository
             return await _context.Tickets.ToListAsync();
         }
 
-        public Task<Ticket?> GetByIdAsync(int id)
+        public async Task<Ticket?> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
         }
 
-        public Task<Ticket?> UpdateTicketAsync(int id)
+        public async Task<Ticket?> UpdateTicketAsync(int id)
         {
-            throw new NotImplementedException();
+            var ticketModel = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
+
+            if(ticketModel == null) return null;
+
+            await _context.SaveChangesAsync();
+
+            return ticketModel;
         }
     }
 }

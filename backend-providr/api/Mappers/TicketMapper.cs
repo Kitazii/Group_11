@@ -29,5 +29,15 @@ namespace api.Mappers
                 Service_Request_Date = ticketDto.Service_Request_Date
             };
         }
+
+        public static Ticket ToTicketFromUpdateDto(this UpdateTicketRequestDto ticketDto, Ticket existingticket)
+        {
+            return new Ticket
+            {
+                Service_Request_Name = string.IsNullOrWhiteSpace(ticketDto.Service_Request_Name) ? existingticket.Service_Request_Name : ticketDto.Service_Request_Name,
+                Service_Request_Date = existingticket.Service_Request_Date,
+                Service_Updated_Date = ticketDto.Service_Updated_Date
+            };
+        }
     }
 }
