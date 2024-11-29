@@ -15,6 +15,11 @@ function App() {
         console.log(e);
     }
 
+    const onPortfolioCreate = (e: SyntheticEvent) => {
+      e.preventDefault();
+      console.log(e);
+    }
+
     const onClick = (e: SyntheticEvent) => {
         //const result = await searchBusinesses(search);
     };
@@ -22,7 +27,10 @@ function App() {
   return (
     <div className="app">
       <Search onClick={onClick} search={search} handleChange={handleChange}/>
-      <CardList />
+      <CardList searchResults = {searhResult} onPortfolioCreate={onPortfolioCreate} />
+      {serverError && <div>Unable to connect to API</div>}
+      
+
 =======
 import React from 'react';
 import logo from './logo.svg';
