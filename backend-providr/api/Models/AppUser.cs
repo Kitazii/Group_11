@@ -13,6 +13,6 @@ namespace api.Models
         public string Postcode { get; set; } = string.Empty;
 
         //NAV PROP - Many Tickets
-        //public List<Ticket> Tickets { get; set; } = new List<Ticket>();
+        public List<Ticket>? Tickets { get; set; } = null;
     }
 }

@@ -13,9 +13,12 @@ namespace api.Models
         public DateTime Service_Request_Date{ get; set;} = DateTime.Now;
         public DateTime Service_Updated_Date{ get; set;} = DateTime.Now;
 
-        //NAV PROP - One User
-        //public int? UserId { get; set; }
-        //public AppUser? User { get; set; }
+        //Nav Prop - ONE
+        public int? UserId { get; set; } = null;
+        public AppUser? User { get; set; } = null;
+
+        //Nav Prop - MANY
+        public List<Workers>? Workers { get; set; } = null;
 
     }
 }

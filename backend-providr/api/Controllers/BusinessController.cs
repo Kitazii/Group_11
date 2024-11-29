@@ -84,7 +84,6 @@ namespace api.Controllers
             if(businessModel == null) return NotFound();
 
             return NoContent();
-            
         }
     }
 }
