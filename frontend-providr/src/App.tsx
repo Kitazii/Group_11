@@ -10,14 +10,19 @@ function App() {
   const [search, setSearch] = useState<string>("");
   //const [searchResult, setSearchResult] = useState<BusinessSearch[]>([]);
 
+  const [portfolioValues,setPortfolioValues] = useState<string[]>([]);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
         console.log(e);
     }
 
-    const onPortfolioCreate = (e: SyntheticEvent) => {
+    const onPortfolioCreate = (e: any) => {
       e.preventDefault();
-      console.log(e);
+      const exists = portfolioValues.find((value) => value === e.target[0].value)
+      if (exists) return;
+      const updatedPortfolio = [...portfolioValues, e.target[0].value]
+      setPortfolioValues(updatedPortfolio);
     }
 
     const onClick = (e: SyntheticEvent) => {
@@ -27,7 +32,8 @@ function App() {
   return (
     <div className="app">
       <Search onClick={onClick} search={search} handleChange={handleChange}/>
-      <CardList searchResults = {searhResult} onPortfolioCreate={onPortfolioCreate} />
+      <ListPortfolio portfolioValues={portfolioValues}/>
+      <CardList searchResults = {searhResults} onPortfolioCreate={onPortfolioCreate} />
       {serverError && <div>Unable to connect to API</div>}
       
 
