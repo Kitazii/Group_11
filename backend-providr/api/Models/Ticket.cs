@@ -18,7 +18,7 @@ namespace api.Models
         public AppUser? User { get; set; } = null;
 
         //Nav Prop - MANY
-        public List<Workers>? Workers { get; set; } = null;
+        public List<Workers_On_Ticket>? Workers { get; set; } = null;
 
     }
 }

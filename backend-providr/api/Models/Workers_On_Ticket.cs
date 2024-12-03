@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Models
 {
-    public class Workers
+    public class Workers_On_Ticket
     {
         public int Id { get; set; }
         public int Service_Workers_Quantity { get; set; }

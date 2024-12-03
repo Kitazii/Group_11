@@ -13,6 +13,6 @@ namespace api.Models
         public decimal Service_Cost { get; set; } = 0.0m;
 
         //Nav Prop - Many
-        public List<Workers>? Workers { get; set; } = null;
+        public List<Workers_On_Ticket>? Workers { get; set; } = null;
     }
 }

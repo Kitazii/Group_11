@@ -16,5 +16,6 @@ namespace api.Data
         public required DbSet<Business> Businesses{ get; set; }
         public required DbSet<Customer> Customers { get; set; }
         public required DbSet<Ticket> Tickets{ get; set; }
+        public required DbSet<Workers_On_Ticket> Workers { get; set; }
     }
 }

@@ -54,18 +54,18 @@ namespace api.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tickets",
+                name: "Service",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Service_Request_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Service_Request_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Service_Updated_Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Service_Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Service_Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Service_Cost = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tickets", x => x.Id);
+                    table.PrimaryKey("PK_Service", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -215,6 +215,53 @@ namespace api.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Tickets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Service_Request_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Service_Request_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Service_Updated_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    UserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tickets", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tickets_AspNetUsers_UserId1",
+                        column: x => x.UserId1,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Workers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Service_Workers_Quantity = table.Column<int>(type: "int", nullable: false),
+                    ServiceId = table.Column<int>(type: "int", nullable: true),
+                    TicketId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Workers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Workers_Service_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Service",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Workers_Tickets_TicketId",
+                        column: x => x.TicketId,
+                        principalTable: "Tickets",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -253,6 +300,21 @@ namespace api.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tickets_UserId1",
+                table: "Tickets",
+                column: "UserId1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Workers_ServiceId",
+                table: "Workers",
+                column: "ServiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Workers_TicketId",
+                table: "Workers",
+                column: "TicketId");
         }
 
         /// <inheritdoc />
@@ -280,10 +342,16 @@ namespace api.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Tickets");
+                name: "Workers");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Service");
+
+            migrationBuilder.DropTable(
+                name: "Tickets");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

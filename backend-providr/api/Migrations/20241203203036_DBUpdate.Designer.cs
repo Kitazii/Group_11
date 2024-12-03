@@ -12,7 +12,7 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241129223045_DBUpdate")]
+    [Migration("20241203203036_DBUpdate")]
     partial class DBUpdate
     {
         /// <inheritdoc />
@@ -237,6 +237,30 @@ namespace api.Migrations
                     b.UseTptMappingStrategy();
                 });
 
+            modelBuilder.Entity("api.Models.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Service_Cost")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Service_Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Service_Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Service");
+                });
+
             modelBuilder.Entity("api.Models.Ticket", b =>
                 {
                     b.Property<int>("Id")
@@ -255,9 +279,43 @@ namespace api.Migrations
                     b.Property<DateTime>("Service_Updated_Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId1");
+
                     b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("api.Models.Workers_On_Ticket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Service_Workers_Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TicketId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceId");
+
+                    b.HasIndex("TicketId");
+
+                    b.ToTable("Workers");
                 });
 
             modelBuilder.Entity("api.Models.Business", b =>
@@ -351,6 +409,30 @@ namespace api.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("api.Models.Ticket", b =>
+                {
+                    b.HasOne("api.Models.AppUser", "User")
+                        .WithMany("Tickets")
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("api.Models.Workers_On_Ticket", b =>
+                {
+                    b.HasOne("api.Models.Service", "Service")
+                        .WithMany("Workers")
+                        .HasForeignKey("ServiceId");
+
+                    b.HasOne("api.Models.Ticket", "Ticket")
+                        .WithMany("Workers")
+                        .HasForeignKey("TicketId");
+
+                    b.Navigation("Service");
+
+                    b.Navigation("Ticket");
+                });
+
             modelBuilder.Entity("api.Models.Business", b =>
                 {
                     b.HasOne("api.Models.AppUser", null)
@@ -367,6 +449,21 @@ namespace api.Migrations
                         .HasForeignKey("api.Models.Customer", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("api.Models.AppUser", b =>
+                {
+                    b.Navigation("Tickets");
+                });
+
+            modelBuilder.Entity("api.Models.Service", b =>
+                {
+                    b.Navigation("Workers");
+                });
+
+            modelBuilder.Entity("api.Models.Ticket", b =>
+                {
+                    b.Navigation("Workers");
                 });
 #pragma warning restore 612, 618
         }
