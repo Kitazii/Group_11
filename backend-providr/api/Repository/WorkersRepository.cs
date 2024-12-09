@@ -20,6 +20,19 @@ namespace api.Repository
 
         public async Task<Workers_On_Ticket> CreateWorkersAsync(Workers_On_Ticket workersModel)
         {
+            // Retrieve existing Service and Ticket entities from the database
+            var existingService = await _context.Services.FindAsync(workersModel.ServiceId);
+            var existingTicket = await _context.Tickets.FindAsync(workersModel.TicketId);
+
+            if (existingService == null || existingTicket == null)
+            {
+                throw new Exception("Service or Ticket not found");
+            }
+
+            // Associate the existing entities
+            workersModel.Service = existingService;
+            workersModel.Ticket = existingTicket;
+
             await _context.Workers.AddAsync(workersModel);
             await _context.SaveChangesAsync();
             return workersModel;

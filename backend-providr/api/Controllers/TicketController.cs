@@ -26,7 +26,7 @@ namespace api.Controllers
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var tickets = await _ticketRepo.GetAllAsync();
-            var ticketDto = tickets.Select(s => s.ToTicketDto());
+            var ticketDto = tickets.Select(t => t.ToTicketDto());
 
             return Ok(ticketDto);
         }

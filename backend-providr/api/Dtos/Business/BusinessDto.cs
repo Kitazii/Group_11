@@ -10,6 +10,7 @@ namespace api.Dtos.Business
     {
         public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
         public string? Email { get; set; }
         public string? PhoneNumber { get; set; }
         public string Street { get; set; } = string.Empty;
@@ -17,6 +18,7 @@ namespace api.Dtos.Business
         public string Postcode { get; set; } = string.Empty;
         public BusinessType? BusinessType { get; set; }
         public string BusinessTypeValue { get; set; } = string.Empty;
+        public string? Token { get; set; }
         //NAV PROP - for Service Request
 
     }

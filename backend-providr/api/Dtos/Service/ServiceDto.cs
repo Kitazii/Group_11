@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Workers;
 
-namespace api.Models
+namespace api.Dtos.Service
 {
-    public class MyService
+    public class ServiceDto
     {
         public int Id { get; set; }
         public string Service_Type { get; set; } = string.Empty;
@@ -13,6 +14,6 @@ namespace api.Models
         public decimal Service_Cost { get; set; } = 0.0m;
 
         //Nav Prop - Many
-        public List<Workers_On_Ticket> Workers { get; set; } = new();
+        public List<WorkersDto> Workers { get; set; } = new();
     }
 }

@@ -182,6 +182,8 @@ C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Do
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Humanizer.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.CodeAnalysis.dll
@@ -207,6 +209,8 @@ C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Mi
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.SqlServer.Server.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Mono.TextTemplating.dll
+C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Newtonsoft.Json.dll
+C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Newtonsoft.Json.Bson.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Sprache.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\mrkie\Desktop\Group_11\backend-providr\api\bin\Release\net8.0\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll

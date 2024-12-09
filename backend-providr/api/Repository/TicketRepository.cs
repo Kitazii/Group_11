@@ -47,6 +47,11 @@ namespace api.Repository
             return await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);
         }
 
+        public Task<bool> TicketExists(int id)
+        {
+            return _context.Tickets.AnyAsync(t => t.Id == id);
+        }
+
         public async Task<Ticket?> UpdateTicketAsync(int id)
         {
             var ticketModel = await _context.Tickets.FirstOrDefaultAsync(t => t.Id == id);

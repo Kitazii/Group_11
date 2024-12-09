@@ -9,20 +9,24 @@ namespace api.Mappers
 {
     public static class WorkersMapper
     {
-        public static WorkersDto ToWorkersDto (this Workers_On_Ticket WorkersModel)
+        public static WorkersDto ToWorkersDto (this Workers_On_Ticket workersModel)
         {
             return new WorkersDto
             {
-                Id = WorkersModel.Id,
-                Service_Workers_Quantity = WorkersModel.Service_Workers_Quantity
+                Id = workersModel.Id,
+                Service_Workers_Quantity = workersModel.Service_Workers_Quantity,
+                ServiceId = workersModel.ServiceId,
+                TicketId = workersModel.TicketId
             }; 
         }
 
-        public static Workers_On_Ticket ToWorkersFromCreateDTO(this CreateWorkersRequestDto workersDto)
+        public static Workers_On_Ticket ToWorkersFromCreateDTO(this CreateWorkersRequestDto workersDto, int serviceId, int ticketId)
         {
             return new Workers_On_Ticket
             {
-                Service_Workers_Quantity = workersDto.Service_Workers_Quantity
+                Service_Workers_Quantity = workersDto.Service_Workers_Quantity,
+                ServiceId = serviceId,
+                TicketId = ticketId
             };
         }
 
@@ -30,7 +34,7 @@ namespace api.Mappers
         {
             return new Workers_On_Ticket
             {
-                Service_Workers_Quantity = workersDto.Service_Workers_Quantity == 0 ? existingWorkers.Service_Workers_Quantity : workersDto.Service_Workers_Quantity
+                Service_Workers_Quantity = (workersDto.Service_Workers_Quantity <= 0) ? existingWorkers.Service_Workers_Quantity : workersDto.Service_Workers_Quantity
             };
         }
     }

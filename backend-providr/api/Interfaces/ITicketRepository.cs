@@ -13,5 +13,6 @@ namespace api.Interfaces
         Task<Ticket> CreateTicketAsync(Ticket ticketModel);
         Task<Ticket?> UpdateTicketAsync(int id);
         Task<Ticket?> DeleteTicketAsync(int id);
+        Task<bool> TicketExists(int id);
     }
 }

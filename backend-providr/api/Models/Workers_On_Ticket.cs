@@ -11,10 +11,10 @@ namespace api.Models
         public int Service_Workers_Quantity { get; set; }
 
         //Nav Prop - One
-        public int? ServiceId { get; set; } = null;
-        public Service? Service { get; set; } = null;
+        public int ServiceId { get; set; }
+        public MyService Service { get; set; } = new();
 
-        public int? TicketId { get; set; } = null;
-        public Ticket? Ticket { get; set; } = null;
+        public int TicketId { get; set; }
+        public Ticket Ticket { get; set; } = new();
     }
 }

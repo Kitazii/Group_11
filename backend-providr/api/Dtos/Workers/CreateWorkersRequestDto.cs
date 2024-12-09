@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Service;
+using api.Dtos.Ticket;
 
 namespace api.Dtos.Workers
 {

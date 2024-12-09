@@ -16,9 +16,13 @@ namespace api.Controllers
     public class WorkersController : ControllerBase
     {
         private readonly IWorkersRepository _workersRepo;
-        public WorkersController(IWorkersRepository workersRepo)
+        private readonly IServiceRepository _serviceRepo;
+        private readonly ITicketRepository _tickertRepo;
+        public WorkersController(IWorkersRepository workersRepo, IServiceRepository serviceRepo, ITicketRepository ticketRepo)
         {
             _workersRepo = workersRepo;
+            _serviceRepo = serviceRepo;
+            _tickertRepo = ticketRepo;
         }
 
         [HttpGet]
@@ -42,10 +46,19 @@ namespace api.Controllers
             return Ok(workers.ToWorkersDto());
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateWorkersRequestDto workersDto)
+        [HttpPost("{serviceId}/{ticketId}")]
+        public async Task<IActionResult> Create([FromRoute] int serviceId, [FromRoute] int ticketId, CreateWorkersRequestDto workersDto)
         {
-            var workersModel = workersDto.ToWorkersFromCreateDTO();
+            if (!await _serviceRepo.ServiceExists(serviceId))
+            {
+                return BadRequest("Service does not exist");
+            }
+
+            if (!await _tickertRepo.TicketExists(ticketId))
+            {
+                return BadRequest("Ticket does not exists");
+            }
+            var workersModel = workersDto.ToWorkersFromCreateDTO(serviceId, ticketId);
 
             await _workersRepo.CreateWorkersAsync(workersModel);
 
