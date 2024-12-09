@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 import { ChangeEvent, SyntheticEvent, useState } from 'react';
+=======
+import './App.css';
+
+function App() {
+ return <>
+ <NavBar />
+ <Outlet />
+ </>;
+
+import React from 'react';
+import logo from './logo.svg';
+>>>>>>> d13ec04fc8fd47855c3d9d255bc2101e31ad7e10
 import './App.css';
 import CardList from './Components/CardList/CardList';
 import { Search } from './Components/Search/Search';
