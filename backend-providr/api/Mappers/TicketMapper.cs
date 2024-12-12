@@ -17,7 +17,9 @@ namespace api.Mappers
             {
                 Id = ticketModel.Id,
                 Service_Request_Name = ticketModel.Service_Request_Name,
-                Service_Request_Date = ticketModel.Service_Request_Date
+                Service_Request_Date = ticketModel.Service_Request_Date,
+                UserId = ticketModel.UserId,
+                Workers = ticketModel.Workers.Select(w => w.ToWorkersDto()).ToList()
             }; 
         }
 
@@ -26,7 +28,8 @@ namespace api.Mappers
             return new Ticket
             {
                 Service_Request_Name = ticketDto.Service_Request_Name,
-                Service_Request_Date = ticketDto.Service_Request_Date
+                Service_Request_Date = ticketDto.Service_Request_Date,
+                UserId = ticketDto.UserId
             };
         }
 
@@ -34,9 +37,13 @@ namespace api.Mappers
         {
             return new Ticket
             {
+                Id = existingticket.Id,
                 Service_Request_Name = string.IsNullOrWhiteSpace(ticketDto.Service_Request_Name) ? existingticket.Service_Request_Name : ticketDto.Service_Request_Name,
                 Service_Request_Date = existingticket.Service_Request_Date,
-                Service_Updated_Date = ticketDto.Service_Updated_Date
+                Service_Updated_Date = ticketDto.Service_Updated_Date,
+                UserId = existingticket.UserId,
+                User = existingticket.User,
+                Workers = existingticket.Workers
             };
         }
     }

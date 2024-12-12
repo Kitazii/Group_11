@@ -14,11 +14,11 @@ namespace api.Models
         public DateTime Service_Updated_Date{ get; set;} = DateTime.Now;
 
         //Nav Prop - ONE
-        public int? UserId { get; set; } = null;
+        public string UserId { get; set; } = string.Empty;
         public AppUser? User { get; set; } = null;
 
         //Nav Prop - MANY
-        public List<Workers_On_Ticket>? Workers { get; set; } = null;
+        public List<Workers_On_Ticket> Workers { get; set; } = new();
 
     }
 }

@@ -12,7 +12,7 @@ using api.Data;
 namespace api.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20241209022642_DBUpdate")]
+    [Migration("20241211195309_DBUpdate")]
     partial class DBUpdate
     {
         /// <inheritdoc />
@@ -54,13 +54,13 @@ namespace api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "52c4e2bc-7444-45fa-8592-8f66ae061b95",
+                            Id = "e2b4e256-2500-4456-be91-e4594fe5dd66",
                             Name = "Business",
                             NormalizedName = "BUSINESS"
                         },
                         new
                         {
-                            Id = "b670f373-6220-4bb5-9cee-ec1f2ac1e69d",
+                            Id = "d5973c29-d972-4af3-b8fe-d3725add3d57",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -251,7 +251,7 @@ namespace api.Migrations
                     b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("api.Models.Service", b =>
+            modelBuilder.Entity("api.Models.MyService", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -293,15 +293,13 @@ namespace api.Migrations
                     b.Property<DateTime>("Service_Updated_Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId1")
+                    b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tickets");
                 });
@@ -358,15 +356,12 @@ namespace api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CustomerTypeValue")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Forename")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.ToTable("Customers");
@@ -427,14 +422,16 @@ namespace api.Migrations
                 {
                     b.HasOne("api.Models.AppUser", "User")
                         .WithMany("Tickets")
-                        .HasForeignKey("UserId1");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("api.Models.Workers_On_Ticket", b =>
                 {
-                    b.HasOne("api.Models.Service", "Service")
+                    b.HasOne("api.Models.MyService", "Service")
                         .WithMany("Workers")
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -474,7 +471,7 @@ namespace api.Migrations
                     b.Navigation("Tickets");
                 });
 
-            modelBuilder.Entity("api.Models.Service", b =>
+            modelBuilder.Entity("api.Models.MyService", b =>
                 {
                     b.Navigation("Workers");
                 });

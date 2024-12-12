@@ -20,6 +20,7 @@ namespace api.Mappers
                 Forename = customerModel.Forename,
                 Surname = customerModel.Surname,
                 Email = customerModel.Email,
+                Username = customerModel.UserName,
                 PhoneNumber = customerModel.PhoneNumber,
                 Street = customerModel.Street,
                 City = customerModel.City,
@@ -35,6 +36,7 @@ namespace api.Mappers
         {
             return new Customer
             {
+                UserName = customerDto.Username,
                 Forename = customerDto.Forename,
                 Surname = customerDto.Forename,
                 Email = customerDto.Email,
@@ -53,6 +55,7 @@ namespace api.Mappers
         {
             return new Customer
             {
+                UserName = string.IsNullOrWhiteSpace(customerDto.Username) ? existingCustomer.UserName : customerDto.Username,
                 Forename = string.IsNullOrWhiteSpace(customerDto.Forename) ? existingCustomer.Forename : customerDto.Forename,
                 Surname = string.IsNullOrWhiteSpace(customerDto.Surname) ? existingCustomer.Surname : customerDto.Surname,
                 Email = string.IsNullOrWhiteSpace(customerDto.Email) ? existingCustomer.Email : customerDto.Email,

@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Business;
+using api.Dtos.Customer;
+using api.Dtos.Workers;
 
 namespace api.Dtos.Ticket
 {
@@ -14,7 +17,11 @@ namespace api.Dtos.Ticket
         public DateTime Service_Updated_Date{ get; set;} = DateTime.Now;
 
         //NAV PROP - One User
-        //public int? UserId { get; set; }
-        //public AppUser? User { get; set; }
+        public string UserId { get; set; } = string.Empty;
+        public CustomerDto? Customer { get; set; }
+
+
+        //Nav Prop - Many
+        public List<WorkersDto> Workers { get; set; } = new();
     }
     }

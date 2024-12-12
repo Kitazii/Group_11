@@ -2,12 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Dtos.Account;
 using api.Dtos.Business;
 using api.Dtos.Customer;
 using api.Interfaces;
 using api.Models;
+using api.Repository;
+using api.Respository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers
 {
@@ -17,10 +21,16 @@ namespace api.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly ITokenService _tokenService;
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService)
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly ICustomerRepository _customerRepo;
+        private readonly IBusinessRepository _businessRepo;
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signinManager, ICustomerRepository customerRepo, IBusinessRepository businessRepo)
         {
             _tokenService = tokenService;
             _userManager = userManager;
+            _signInManager = signinManager;
+            _businessRepo = businessRepo;
+            _customerRepo = customerRepo;
         }
 
         [HttpPost("registerCustomer")]
@@ -31,6 +41,12 @@ namespace api.Controllers
 
                 var appUser = new Customer
                 {
+                    Forename = registerDto.Forename,
+                    Surname = registerDto.Surname,
+                    Street = registerDto.Street,
+                    City = registerDto.City,
+                    Postcode = registerDto.Postcode,
+                    PhoneNumber = registerDto.PhoneNumber,
                     UserName = registerDto.Username,
                     Email = registerDto.Email
                 };
@@ -45,6 +61,12 @@ namespace api.Controllers
                         return Ok(
                             new CustomerDto
                             {
+                                Forename = appUser.Forename,
+                                Surname = appUser.Surname,
+                                Street = appUser.Street,
+                                City = appUser.City,
+                                Postcode = appUser.Postcode,
+                                PhoneNumber = appUser.PhoneNumber,
                                 Username = appUser.UserName,
                                 Email = appUser.Email,
                                 Token =_tokenService.CreateToken(appUser)
@@ -72,7 +94,12 @@ namespace api.Controllers
                 var appUser = new Business
                 {
                     UserName = registerDto.Username,
-                    Email = registerDto.Email
+                    Email = registerDto.Email,
+                    Name = registerDto.Name,
+                    Street = registerDto.Street,
+                    City = registerDto.City,
+                    Postcode = registerDto.Postcode,
+                    PhoneNumber = registerDto.PhoneNumber
                 };
 
                 var createdUser = await _userManager.CreateAsync(appUser, registerDto.Password);
@@ -87,6 +114,11 @@ namespace api.Controllers
                             {
                                 Username = appUser.UserName,
                                 Email = appUser.Email,
+                                Name = appUser.Name,
+                                Street = appUser.Street,
+                                City = appUser.City,
+                                Postcode = appUser.Postcode,
+                                PhoneNumber = appUser.PhoneNumber,
                                 Token =_tokenService.CreateToken(appUser)
                             }
                         );
@@ -102,5 +134,60 @@ namespace api.Controllers
                 return StatusCode(500, e);
             }
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginDto loginDto)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == loginDto.Username);
+
+            if (user == null) return Unauthorized("Invalid username!");
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+
+            if(!result.Succeeded) return Unauthorized("Username not found and/or password inccorect");
+
+            if (user is Customer)
+            {
+                var customer = await _customerRepo.GetByIdAsync(user.Id);
+                return Ok(
+                new CustomerDto
+                {
+                    Username = customer.UserName,
+                    Email = customer.Email,
+                    Forename = customer.Forename,
+                    Surname = customer.Surname,
+                    PhoneNumber = customer.PhoneNumber,
+                    Street = customer.Street,
+                    City = customer.City,
+                    Postcode = customer.Postcode,
+                    Token =_tokenService.CreateToken(customer)
+                }
+                );
+            }
+            
+            var business = await _businessRepo.GetByIdAsync(user.Id);
+
+            return Ok(
+                new BusinessDto
+                {
+                    Username = business.UserName,
+                    Email = business.Email,
+                    Name = business.Name,
+                    PhoneNumber = business.PhoneNumber,
+                    Street = business.Street,
+                    City = business.City,
+                    Postcode = business.Postcode,
+                    Token =_tokenService.CreateToken(business)
+                }
+                );
+            
+        }
+
+        
     }
 }

@@ -34,7 +34,10 @@ namespace api.Mappers
         {
             return new Workers_On_Ticket
             {
-                Service_Workers_Quantity = (workersDto.Service_Workers_Quantity <= 0) ? existingWorkers.Service_Workers_Quantity : workersDto.Service_Workers_Quantity
+                Id = existingWorkers.Id,
+                Service_Workers_Quantity = (workersDto.Service_Workers_Quantity <= 0) ? existingWorkers.Service_Workers_Quantity : workersDto.Service_Workers_Quantity,
+                ServiceId = existingWorkers.Id,
+                TicketId = existingWorkers.TicketId
             };
         }
     }

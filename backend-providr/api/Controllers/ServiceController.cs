@@ -65,9 +65,9 @@ namespace api.Controllers
             }
             var serviceModel = updateDto.ToServiceFromUpdateDto(existingService);
 
-            if(existingService == null) return NotFound();
+            if(serviceModel == null) return NotFound();
 
-            return Ok(existingService.ToServiceDto());
+            return Ok(serviceModel.ToServiceDto());
             
         }
 

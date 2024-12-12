@@ -19,6 +19,17 @@ namespace api.Repository
 
         public async Task<Ticket> CreateTicketAsync(Ticket ticketModel)
         {
+            // Retrieve existing Customer and Business entities thatt belong to the ticket from the database
+           // var existingUser = await _context.Businesses.FindAsync(ticketModel.UserId);
+
+            //if (existingUser == null)
+            //{
+               // throw new Exception("user not found");
+            //}
+
+            // Associate the existing entities
+            //ticketModel.User = existingUser;
+            
             await _context.Tickets.AddAsync(ticketModel);
             await _context.SaveChangesAsync();
             return ticketModel;
@@ -39,7 +50,7 @@ namespace api.Repository
 
         public async Task<List<Ticket>> GetAllAsync()
         {
-            return await _context.Tickets.ToListAsync();
+            return await _context.Tickets.Include(t => t.Workers).ToListAsync();
         }
 
         public async Task<Ticket?> GetByIdAsync(int id)

@@ -9,7 +9,7 @@ namespace api.Models
     {
         public string? Forename { get; set; } = string.Empty;
         public string? Surname { get; set; } = string.Empty;
-        public CustomerType? CustomerType { get; set; } = Models.CustomerType.Standard;
+        public CustomerType? CustomerType { get; set; } = 0;
         public string? CustomerTypeValue { get; set; } = string.Empty;
     }
 

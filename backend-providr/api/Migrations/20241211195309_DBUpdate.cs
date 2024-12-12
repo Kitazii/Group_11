@@ -201,10 +201,10 @@ namespace api.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Forename = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Forename = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CustomerType = table.Column<int>(type: "int", nullable: true),
-                    CustomerTypeValue = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CustomerTypeValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -226,17 +226,17 @@ namespace api.Migrations
                     Service_Request_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Service_Request_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Service_Updated_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true),
-                    UserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tickets", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tickets_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
+                        name: "FK_Tickets_AspNetUsers_UserId",
+                        column: x => x.UserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -271,8 +271,8 @@ namespace api.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "52c4e2bc-7444-45fa-8592-8f66ae061b95", null, "Business", "BUSINESS" },
-                    { "b670f373-6220-4bb5-9cee-ec1f2ac1e69d", null, "Customer", "CUSTOMER" }
+                    { "d5973c29-d972-4af3-b8fe-d3725add3d57", null, "Customer", "CUSTOMER" },
+                    { "e2b4e256-2500-4456-be91-e4594fe5dd66", null, "Business", "BUSINESS" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -315,9 +315,9 @@ namespace api.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tickets_UserId1",
+                name: "IX_Tickets_UserId",
                 table: "Tickets",
-                column: "UserId1");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Workers_ServiceId",

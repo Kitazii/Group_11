@@ -18,6 +18,7 @@ namespace api.Mappers
             {
                 Id = businessModel.Id,
                 Name = businessModel.Name,
+                Username = businessModel.UserName,
                 Email = businessModel.Email,
                 PhoneNumber = businessModel.PhoneNumber,
                 Street = businessModel.Street,
@@ -35,6 +36,7 @@ namespace api.Mappers
             return new Business
             {
                 Name = businessDto.Name,
+                UserName = businessDto.Username,
                 Email = businessDto.Email,
                 PhoneNumber = businessDto.PhoneNumber,
                 Street = businessDto.Street,
@@ -51,6 +53,7 @@ namespace api.Mappers
         {
             return new Business
             {
+                UserName = string.IsNullOrWhiteSpace(businessDto.Username) ? existingBusiness.UserName : businessDto.Username,
                 Name = string.IsNullOrWhiteSpace(businessDto.Name) ? existingBusiness.Name : businessDto.Name,
                 Email = string.IsNullOrWhiteSpace(businessDto.Email) ? existingBusiness.Email : businessDto.Email,
                 PhoneNumber = string.IsNullOrWhiteSpace(businessDto.PhoneNumber) ? existingBusiness.PhoneNumber : businessDto.PhoneNumber,

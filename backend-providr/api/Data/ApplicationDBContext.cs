@@ -38,6 +38,18 @@ namespace api.Data
                 .WithMany(t => t.Workers)
                 .HasForeignKey(w => w.TicketId);
 
+            // Configure Ticket
+            builder.Entity<Ticket>()
+                .HasOne(t => t.User)
+                .WithMany(u => u.Tickets)
+                .HasForeignKey(t => t.UserId);
+
+            // Configure Service
+            builder.Entity<MyService>()
+                .HasMany(s => s.Workers)
+                .WithOne(w => w.Service)
+                .HasForeignKey(w => w.ServiceId);
+
             List<IdentityRole> roles = new List<IdentityRole>
             {
                 new IdentityRole
