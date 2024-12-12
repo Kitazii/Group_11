@@ -6,6 +6,7 @@ using api.Models;
 
 namespace api.Interfaces
 {
+    // abstract methods to be used in repository classes
     public interface ITokenService
     {
         string CreateToken(AppUser user);

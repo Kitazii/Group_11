@@ -12,6 +12,8 @@ namespace api.Controllers
 {
     [Route("api/customer")]
     [ApiController]
+
+    // CRUD Methods for Customer operations
     public class CustomerController : ControllerBase
     {
         private readonly ICustomerRepository _customerRepo;

@@ -8,6 +8,7 @@ namespace api.Interfaces
 {
     public interface ITicketRepository
     {
+        // abstract methods to be used in repository classes
         Task<List<Ticket>> GetAllAsync();
         Task<Ticket?> GetByIdAsync(int id);
         Task<Ticket> CreateTicketAsync(Ticket ticketModel);

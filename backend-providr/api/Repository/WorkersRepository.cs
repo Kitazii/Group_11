@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
 {
+    //Handles database manipulation logic for workers
     public class WorkersRepository : IWorkersRepository
     {
         private readonly ApplicationDBContext _context;

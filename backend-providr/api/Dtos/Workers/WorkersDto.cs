@@ -7,6 +7,7 @@ using api.Dtos.Ticket;
 
 namespace api.Dtos.Workers
 {
+    //Used when parsing objects to server side, for JSON transformation. Extra step to ensure data security.
     public class WorkersDto
     {
         public int Id { get; set; }

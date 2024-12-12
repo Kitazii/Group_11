@@ -7,6 +7,7 @@ using api.Dtos.Customer;
 
 namespace api.Dtos.Ticket
 {
+    //Used when parsing objects to server side, for JSON transformation. Extra step to ensure data security.
     public class CreateTicketRequestDto
     {
         public string Service_Request_Name { get; set;} = string.Empty;

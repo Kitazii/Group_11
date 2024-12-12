@@ -8,6 +8,7 @@ namespace api.Interfaces
 {
     public interface IServiceRepository
     {
+        // abstract methods to be used in repository classes
         Task<List<MyService>> GetAllAsync();
         Task<MyService?> GetByIdAsync(int id);
         Task<MyService> CreateServiceAsync(MyService servicedModel);

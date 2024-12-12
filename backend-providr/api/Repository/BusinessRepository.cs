@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Respository
 {
+    //Handles database manipulation logic for businesses
     public class BusinessRepository : IBusinessRepository
     {
         private readonly ApplicationDBContext _context; //comment

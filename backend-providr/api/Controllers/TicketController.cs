@@ -13,6 +13,7 @@ namespace api.Controllers
     [Route("api/ticket")]
     [ApiController]
 
+    // CRUD Methods for managing Tickets
     public class TicketController : ControllerBase
     {
         private readonly ITicketRepository _ticketRepo;

@@ -15,6 +15,8 @@ namespace api.Controllers
 {
     [Route("api/business")]
     [ApiController]
+
+    // CRUD Methods for Business operations
     public class BusinessController : ControllerBase
     {
         private readonly IBusinessRepository _businessRepo;

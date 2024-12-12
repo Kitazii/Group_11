@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
 {
+    //Handles database manipulation logic for services
     public class ServiceRepository : IServiceRepository
     {
         private readonly ApplicationDBContext _context;

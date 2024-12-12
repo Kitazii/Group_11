@@ -11,10 +11,11 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.JSInterop.Infrastructure;
 using Microsoft.OpenApi.Models;
 
+//This file is used to configure the project to run properly on Swagger (our endpoint service web interface)
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace api.Dtos.Account
 {
+    //Used when parsing objects to server side, for JSON transformation. Extra step to ensure data security.
     public class LoginDto
     {
         [Required]

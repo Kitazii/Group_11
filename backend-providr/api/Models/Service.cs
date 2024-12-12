@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Models
 {
+    //Buisnesss logic models for Services
     public class MyService
     {
         public int Id { get; set; }

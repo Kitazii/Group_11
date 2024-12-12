@@ -8,6 +8,7 @@ namespace api.Interfaces
 {
     public interface IWorkersRepository
     {
+        // abstract methods to be used in repository classes
         Task<List<Workers_On_Ticket>> GetAllAsync();
         Task<Workers_On_Ticket?> GetByIdAsync(int id);
         Task<Workers_On_Ticket> CreateWorkersAsync(Workers_On_Ticket WorkersModel);

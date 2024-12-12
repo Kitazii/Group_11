@@ -7,6 +7,8 @@ using api.Models;
 
 namespace api.Mappers
 {
+    //Used to map Data Transfer Objects to our business logic models
+    //Ensuring a smooth transition, when throwing objects to our end points
     public static class ServiceMapper
     {
         public static ServiceDto ToServiceDto (this MyService serviceModel)

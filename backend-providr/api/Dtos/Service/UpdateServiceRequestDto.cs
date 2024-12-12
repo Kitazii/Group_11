@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Dtos.Service
 {
+    //Used when parsing objects to server side, for JSON transformation. Extra step to ensure data security.
     public class UpdateServiceRequestDto
     {
         public string Service_Type { get; set; } = string.Empty;

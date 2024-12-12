@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace api.Dtos.Customer
 {
+    //Used when parsing objects to server side, for JSON transformation. Extra step to ensure data security.
     public class RegisterCustomerDto
     {
         public string Forename { get; set; } = string.Empty;

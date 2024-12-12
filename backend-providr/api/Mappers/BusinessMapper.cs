@@ -8,6 +8,8 @@ using DtosBusinessType = api.Dtos.Business.Enum.BusinessType;
 
 namespace api.Mappers
 {
+    //Used to map Data Transfer Objects to our business logic models
+    //Ensuring a smooth transition, when throwing objects to our end points
     public static class BusinessMapper
     {
         #pragma warning disable CS8629 // Nullable value type may be null.

@@ -13,6 +13,8 @@ namespace api.Controllers
 {
     [Route("api/workers")]
     [ApiController]
+    
+    // CRUD Methods for managing workers on a job
     public class WorkersController : ControllerBase
     {
         private readonly IWorkersRepository _workersRepo;

@@ -11,6 +11,8 @@ namespace api.Controllers
 {
     [Route("api/service")]
     [ApiController]
+
+    // CRUD Methods for Service operations
     public class ServiceController : ControllerBase
     {
         private readonly IServiceRepository _serviceRepo;

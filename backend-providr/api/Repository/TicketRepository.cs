@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace api.Repository
 {
+    //Handles database manipulation logic for tickets
     public class TicketRepository : ITicketRepository
     {
         private readonly ApplicationDBContext _context;
@@ -18,18 +19,7 @@ namespace api.Repository
         }
 
         public async Task<Ticket> CreateTicketAsync(Ticket ticketModel)
-        {
-            // Retrieve existing Customer and Business entities thatt belong to the ticket from the database
-           // var existingUser = await _context.Businesses.FindAsync(ticketModel.UserId);
-
-            //if (existingUser == null)
-            //{
-               // throw new Exception("user not found");
-            //}
-
-            // Associate the existing entities
-            //ticketModel.User = existingUser;
-            
+        {           
             await _context.Tickets.AddAsync(ticketModel);
             await _context.SaveChangesAsync();
             return ticketModel;

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Helpers
 {
+    //Used when user queries/searches for different businesses. Ensures successful page rollover.
     public class BusinessQueryObject
     {
         public string? Name { get; set; } = null;

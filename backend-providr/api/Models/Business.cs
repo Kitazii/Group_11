@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace api.Models
 {
+    //Buisnesss logic models for Businesses
+    //inherits from AppUser
     [Table("Business")]
     public class Business : AppUser
     {

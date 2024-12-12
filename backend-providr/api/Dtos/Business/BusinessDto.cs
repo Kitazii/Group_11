@@ -6,6 +6,7 @@ using api.Dtos.Business.Enum;
 
 namespace api.Dtos.Business
 {
+    //Used when parsing objects to server side, for JSON transformation. Extra step to ensure data security.
     public class BusinessDto
     {
         public string Id { get; set; } = string.Empty;

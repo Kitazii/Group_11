@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace api.Models
 {
+    //Buisnesss logic models for Workers assigned to a job
     public class Workers_On_Ticket
     {
         public int Id { get; set; }

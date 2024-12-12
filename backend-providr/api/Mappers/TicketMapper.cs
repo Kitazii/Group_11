@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace api.Mappers
 {
+    //Used to map Data Transfer Objects to our business logic models
+    //Ensuring a smooth transition, when throwing objects to our end points
     public static class TicketMapper
     {
         public static TicketDto ToTicketDto (this Ticket ticketModel)

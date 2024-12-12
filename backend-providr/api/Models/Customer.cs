@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace api.Models
 {
+    //Buisnesss logic models for Customers
+    //inherits from AppUser
     public class Customer : AppUser
     {
         public string? Forename { get; set; } = string.Empty;

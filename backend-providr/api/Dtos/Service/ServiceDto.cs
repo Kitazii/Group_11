@@ -6,6 +6,7 @@ using api.Dtos.Workers;
 
 namespace api.Dtos.Service
 {
+    //Used when parsing objects to server side, for JSON transformation. Extra step to ensure data security.
     public class ServiceDto
     {
         public int Id { get; set; }

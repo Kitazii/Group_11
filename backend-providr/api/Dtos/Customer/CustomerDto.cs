@@ -7,6 +7,7 @@ using api.Dtos.Customer.Enum;
 
 namespace api.Dtos.Customer
 {
+    //Used when parsing objects to server side, for JSON transformation. Extra step to ensure data security.
     public class CustomerDto
     {
         public string Id { get; set; } = string.Empty;

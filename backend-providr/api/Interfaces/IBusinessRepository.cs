@@ -7,6 +7,7 @@ using api.Models;
 
 namespace api.Interfaces
 {
+    // abstract methods to be used in repository classes
     public interface IBusinessRepository
     {
         Task<List<Business>> GetAllAsync(BusinessQueryObject query);
