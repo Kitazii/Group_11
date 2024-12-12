@@ -5,9 +5,14 @@ using System.Threading.Tasks;
 
 namespace api.Models
 {
+    //Buisnesss logic models for Customers
+    //inherits from AppUser
     public class Customer : AppUser
     {
-        public CustomerType? CustomerType { get; set; }
+        public string? Forename { get; set; } = string.Empty;
+        public string? Surname { get; set; } = string.Empty;
+        public CustomerType? CustomerType { get; set; } = 0;
+        public string? CustomerTypeValue { get; set; } = string.Empty;
     }
 
     public enum CustomerType
